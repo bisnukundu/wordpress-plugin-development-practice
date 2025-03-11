@@ -525,3 +525,4 @@ add_action( 'init', 'wporg_register_taxonomy_course' );
 
 include_once plugin_dir_path(__FILE__).'add-user.php';
 include_once plugin_dir_path(__FILE__).'github-info.php';
+include_once plugin_dir_path(__FILE__).'rest-api.php';

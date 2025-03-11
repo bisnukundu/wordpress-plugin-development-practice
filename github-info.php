@@ -1,5 +1,7 @@
 <?php
 
+// In http section of wordpress plugin development documentation. 
+
 function github_info_fn() {
     function github_profile_info( $atts, $content, $tag ) {
 
