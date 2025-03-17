@@ -13,6 +13,7 @@ if ( !class_exists( 'WP_List_Table' ) ) {
 
 function enqueueTailwidCss() {
     wp_enqueue_script( 'tailwind', 'https://unpkg.com/@tailwindcss/browser@4"', [], null );
+    wp_enqueue_script('heartbeat-tesing',plugin_dir_url(__FILE__).'js/heartbeat.js',['jquery', 'heartbeat'],'1.0',true);
 }
 
 add_action( 'wp_enqueue_scripts', 'enqueueTailwidCss' );
@@ -526,3 +527,4 @@ add_action( 'init', 'wporg_register_taxonomy_course' );
 include_once plugin_dir_path(__FILE__).'add-user.php';
 include_once plugin_dir_path(__FILE__).'github-info.php';
 include_once plugin_dir_path(__FILE__).'rest-api.php';
+include_once plugin_dir_path(__FILE__).'heartbeat.php';
