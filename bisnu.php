@@ -13,7 +13,18 @@ if ( !class_exists( 'WP_List_Table' ) ) {
 
 function enqueueTailwidCss() {
     wp_enqueue_script( 'tailwind', 'https://unpkg.com/@tailwindcss/browser@4"', [], null );
-    wp_enqueue_script('heartbeat-tesing',plugin_dir_url(__FILE__).'js/heartbeat.js',['jquery', 'heartbeat'],'1.0',true);
+    // wp_enqueue_script('heartbeat-tesing',plugin_dir_url(__FILE__).'js/heartbeat.js',['jquery', 'heartbeat'],'1.0',true);
+    wp_enqueue_script('ajax-tesing',plugin_dir_url(__FILE__).'js/ajax.js',['jquery'],'1.0',true);
+
+    wp_localize_script(
+        'ajax-tesing', // Handle name of the script
+        'my_ajax_obj', // Name of the JavaScript object
+        array(
+            'ajax_url' => admin_url('admin-ajax.php'), // URL to admin-ajax.php
+            'nonce'    => wp_create_nonce('my_tag_count_nonce'), // Nonce for security
+            'bisnu'=> "This is coming from wp localize script",
+        )
+    );
 }
 
 add_action( 'wp_enqueue_scripts', 'enqueueTailwidCss' );
@@ -528,3 +539,5 @@ include_once plugin_dir_path(__FILE__).'add-user.php';
 include_once plugin_dir_path(__FILE__).'github-info.php';
 include_once plugin_dir_path(__FILE__).'rest-api.php';
 include_once plugin_dir_path(__FILE__).'heartbeat.php';
+include_once plugin_dir_path(__FILE__).'/stackoverflow/clinicalApi.php';
+include_once plugin_dir_path(__FILE__).'ajax-practice.php';
