@@ -1,7 +1,7 @@
 <?php 
 
 function testing_selector(){
-    $html = "<select class='testing_selector'> <option value='a'>A</option> <option value='b'>B</option> <option value='c'>C</option> </select>";
+    $html = "<select class='testing_selector'> <option value=''>Select Option</option> <option value='a'>A</option> <option value='b'>B</option> <option value='c'>C</option> </select>";
     echo $html;
 }
 

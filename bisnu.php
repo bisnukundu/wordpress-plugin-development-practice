@@ -7,8 +7,17 @@ Author URI:https://www.bisnu.com
 Version:1.0.0
 License:GPL2
  */
+
+
 if ( !class_exists( 'WP_List_Table' ) ) {
     require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
+}
+
+function debug($arr){
+echo "<pre>";
+print_r($arr);
+echo "</pre>";
+wp_die();
 }
 
 function enqueueTailwidCss() {
@@ -17,7 +26,7 @@ function enqueueTailwidCss() {
     wp_enqueue_script('ajax-tesing',plugin_dir_url(__FILE__).'js/ajax.js',['jquery'],'1.0',true);
 
     wp_localize_script(
-        'ajax-tesing', // Handle name of the script
+        'ajax-tesing-bisnu', // Handle name of the script
         'my_ajax_obj', // Name of the JavaScript object
         array(
             'ajax_url' => admin_url('admin-ajax.php'), // URL to admin-ajax.php
@@ -428,6 +437,7 @@ function creating_options_fn() {
 // echo esc_html($options_r['title']);
 
     delete_option( "wporg_custom_option" );
+    
 
 };
 add_action( 'admin_init', 'creating_options_fn' );
@@ -535,9 +545,12 @@ function wporg_register_taxonomy_course() {
 }
 add_action( 'init', 'wporg_register_taxonomy_course' );
 
+
 include_once plugin_dir_path(__FILE__).'add-user.php';
 include_once plugin_dir_path(__FILE__).'github-info.php';
 include_once plugin_dir_path(__FILE__).'rest-api.php';
 include_once plugin_dir_path(__FILE__).'heartbeat.php';
 include_once plugin_dir_path(__FILE__).'/stackoverflow/clinicalApi.php';
 include_once plugin_dir_path(__FILE__).'ajax-practice.php';
+include_once plugin_dir_path(__FILE__).'shortcode.php';
+include_once plugin_dir_path(__FILE__).'cron-testing.php';
